@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(rgba(22, 138, 173, 0.8), rgba(0, 0, 0, 0.5))
+        }
+        header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            text-align:left;
+            padding-left: 35px;
+            padding-top: 10px;
+        }
+        header img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+        header h1 {
+            display: inline-block;
+            color: white;
+            margin-left: 10px;
+            font-size: 30px;
+            vertical-align: middle;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width:400px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        input {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            width: 95%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        a {
+            margin-top: 10px;
+            display: inline-block;
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Site Logo">
+        <h1>Relaxify</h1>
+    </header>
+
+    <div class="container">
+        <h2>Login to Relaxify</h2>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <input type="password" id="password" placeholder="Enter your password" required>
+            <button type="submit">Login</button>
+        </form>
+        <a href="signup.html">Don't have an account? Sign up here</a>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Retrieve stored credentials from localStorage
+            const storedEmail = localStorage.getItem('userEmail');
+            const storedPassword = localStorage.getItem('userPassword');
+
+            // Check if credentials match
+            if (email === storedEmail && password === storedPassword) {
+                // If they match, login and redirect to index.html
+                localStorage.setItem('isLoggedIn', true);
+                window.location.href = 'index.html';
+            } else {
+                alert('Invalid credentials, please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
+
+ 
